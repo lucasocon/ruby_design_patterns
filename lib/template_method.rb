@@ -1,26 +1,61 @@
+# Hero base class
 class Hero
   attr_reader :damage, :abilities
 
   def initialize
-    @damage = 10
-    @abilities = []
+    initialize_stats
+    @damage = damage_rating
+    @abilities = occupation_abilities
+  end
+
+  def damage_rating
+    10
+  end
+
+  def occupation_abilities
+    []
+  end
+
+  def greet
+    greeting = ['Hello']
+    greeting << unique_greeting_line
+    greeting
+  end
+
+  def unique_greeting_line
+    raise 'You must define unique_greeting_line'
   end
 
   def attack
     "Attacked dealing #{damage} damage"
   end
-end
 
-class Warrior < Hero
-  def initialize
-    @damage = 15
-    @abilities = [:strike]
+  def initialize_stats
   end
 end
 
+# Warrior class
+class Warrior < Hero
+  def damage_rating
+    15
+  end
+
+  def occupation_abilities
+    [:strike]
+  end
+
+  def unique_greeting_line
+    'Warrior is ready to fight'
+  end
+end
+
+# Mage class
 class Mage < Hero
-  def initialize
-    @damage = 7
-    @abilities = [:magic_arrow]
+  def damage_rating
+    7
+  end
+
+  def occupation_abilities
+    [:magic_arrow]
   end
 end

@@ -8,8 +8,13 @@ describe 'Template Method Pattern' do
     it 'has default damage rating of 10' do
       expect(hero.damage).to eq(10)
     end
+
     it 'can attack' do
       expect(hero.attack).to eq('Attacked dealing 10 damage')
+    end
+
+    it 'requires subclasses to implement unique_greeting_line' do
+      expect{hero.greet}.to raise_exception
     end
   end
 
@@ -19,8 +24,13 @@ describe 'Template Method Pattern' do
     it 'has default damage rating of 15' do
       expect(hero.damage).to eq(15)
     end
+
     it 'has Strike special ability' do
       expect(hero.abilities).to include(:strike)
+    end
+
+    it 'greet other characters' do
+      expect(hero.greet).to eq(['Hello', 'Warrior is ready to fight'])
     end
   end
 
