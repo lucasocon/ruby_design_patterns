@@ -11,7 +11,7 @@ class Hero
     @skills = [:stealth, :driving, :intimidation]
   end
 
-  def print_stats(stats = nil)
+  def print_stats
     printer.print(damage, health, skills)
   end
 end
